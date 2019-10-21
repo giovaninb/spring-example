@@ -1,4 +1,4 @@
-package com.eventoapp.eventoapp;
+package com.eventoapp;
 
 
 

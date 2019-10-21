@@ -1,4 +1,4 @@
-package com.eventoapp.eventoapp.models;
+package com.eventoapp.models;
 
 import java.io.Serializable;
 
@@ -23,6 +23,6 @@ public class Evento implements Serializable {
 	private String nome;
 	private String local;
 	private String data;
-	private String horário;
+	private String horario;
 
 }
