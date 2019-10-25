@@ -1,10 +1,67 @@
-<html>
+<!DOCTYPE html>
+<html xmlns:th="http://thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+
+<head>
+<title>Evento App</title>
+
+<!--Import Google Icon Font-->
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+	rel="stylesheet" />
+<!--Import materialize.css-->
+<link type="text/css" rel="stylesheet"
+	href="materialize/css/materialize.min.css" media="screen,projection" />
+
+<!--Let browser know website is optimized for mobile-->
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+</head>
 
 <body>
 
-    <h1>Hello world from Spring Boot App</h1>
+	<header>
+		<nav>
+			<div class="nav-wrapper">
+				<a href="#" class="brand-logo">Lista de Eventos</a>
+				<ul id="nav-mobile" class="right hide-on-med-and-down">
+					<li><a class="waves-effect waves-light btn" href="/cadastrarEvento"><i
+			class="material-icons left">add_circle_outline</i>Cadastrar Evento</a></li>
+				</ul>
+			</div>
+		</nav>
+
+	</header>
+
+	
+
+	<table class="container">
+		<head>
+		<tr>
+			<th>Nome</th>
+			<th>Local</th>
+			<th>Data</th>
+			<th>Horário</th>
+		</tr>
+		</head>
+
+		<tbody>
+			<tr th:each="evento: ${eventos}">
+				<td><a
+					th:href="${(#mvc.url('EC#detalhesEvento').arg(0, evento.codigo)).build()}"><span
+						th:text="${evento.nome}"></span></a></td>
+				<!-- <th><span th:text="${eventos.nome}"></span></th> -->
+				<th><span th:text="${evento.local}"></span></th>
+				<th><span th:text="${evento.data}"></span></th>
+				<th><span th:text="${evento.horario}"></span></th>
+			</tr>
+		</tbody>
+	</table>
+
+
+
+
+
+	<!--JavaScript at end of body for optimized loading-->
+	<script type="text/javascript" src="materialize/js/materialize.min.js"></script>
 </body>
-
-
 
 </html>

@@ -4,6 +4,7 @@
 
 <head>
 <title>Evento App</title>
+
 <!--Import Google Icon Font-->
 <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
 	rel="stylesheet" />
@@ -19,7 +20,7 @@
 	<header>
 		<nav>
 			<div class="nav-wrapper">
-				<a href="#" class="brand-logo">Cadastro de Eventos</a>
+				<a href="#" class="brand-logo">Detalhes de Evento</a>
 				<ul id="nav-mobile" class="right hide-on-med-and-down">
 					<li><a class="waves-effect waves-light btn"
 						href="/cadastrarEvento"><i class="material-icons left">add_circle_outline</i>Cadastrar
@@ -27,36 +28,74 @@
 				</ul>
 			</div>
 		</nav>
+
 	</header>
+	<h1>Evento</h1>
+	<h3>
+		<a class="waves-effect waves-light btn" href="/eventos"><i
+			class="material-icons left">menu</i>Lista de Eventos</a>
 
-	<a class="waves-effect waves-light btn" href="/eventos"><i
-		class="material-icons left">menu</i>Lista de Eventos</a>
+	</h3>
 
+	<div th:each="evento: ${evento}">
+		<div class="row">
+			<p>
+				Nome: <span th:text="${evento.nome}"></span>
+			</p>
+			<p>
+				Local: <span th:text="${evento.local}"></span>
+			</p>
+			<p>
+				Data: <span th:text="${evento.data}"></span>
+			</p>
+			<p>
+				Horário: <span th:text="${evento.horario}"></span>
+			</p>
+		</div>
+	</div>
+	
+	<h1>Cadastrar Convidado</h1>
 	<th:block th:include="mensagemValidacao"></th:block>
 
-	<form class="container" method="POST">
-		Nome: <input type="text" value="" name="nome" />
+	<form method="POST">
+
 		<div class="row">
-			<div class="input-field col s6">
-				Local: <input type="text" value="" name="local" />
+			<div class="input-field col s3">
+				Nome Convidado: <input type="text" value="" name="nomeConvidado" />
 			</div>
 
 			<div class="input-field col s3">
-				Data: <input type="date" value="" name="data" />
-			</div>
-
-			<div class="input-field col s3">
-				Horário: <input type="time" value="" name="horario" />
+				RG: <input type="text" value="" name="rg" />
 			</div>
 
 		</div>
 
-		<button class="waves-effect waves-light btn" type="submit">
-			<i class="material-icons right">save</i>Salvar Dados
-		</button>
+		<button class="waves-effect waves-light btn" type="submit">Cadastrar</button>
 	</form>
+
+	<h3>Lista de Convidados</h3>
+	<table>
+		<head>
+		<tr>
+			<th>Nome do Convidado</th>
+			<th>RG</th>
+		</tr>
+		</head>
+
+		<tbody>
+			<tr th:each="convidado: ${convidados}">
+				<th><span th:text="${convidado.nomeConvidado}"></span></th>
+				<th><span th:text="${convidado.rg}"></span></th>
+			</tr>
+		</tbody>
+	</table>
+
+
+
 
 	<!--JavaScript at end of body for optimized loading-->
 	<script type="text/javascript" src="materialize/js/materialize.min.js"></script>
+
 </body>
+
 </html>
